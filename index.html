@@ -10,7 +10,7 @@
     font-size: 1em;
     color: #010101
   }
-  header {
+  .header {
     background-color: #777;
     padding: 32px;
     text-align: center;
@@ -31,18 +31,47 @@
   .content {
     padding: 16px;
     height: 450px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    max-width: 600px;
+  }
+  .card__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .card__content > img {
+    max-height: 150px;
+    margin: 16px 16px 0 0;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h2>Kinozal</h2>
+<header class="header">
+  <h1>Kinozal</h1>
 </header>
 <nav>Home</nav>
 <section class="content">
-  Content
+  <article class="card">
+    <header>
+      <h2>Mareld</h2>      
+    </header>
+    <section class="card__content">
+     
+      <img src="https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg"
+           alt="Mareld">
+     
+      <section>
+        <p>2019 - 1h 34min</p>
+        <hr>
+        <p>A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can't distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.</p>
+        <hr>
+        <p>Director: Ove Valeskog</p>
+      </section>
+    </section>
+  </article>
 </section>
 <footer>
   <p>Footer</p>
