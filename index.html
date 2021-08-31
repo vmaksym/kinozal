@@ -17,22 +17,22 @@
     font-size: 35px;
     color: white;
   }
-  nav {
+  .navigation {
     background: #ccc;
     padding: 8px;
     text-align: center;
   }
-  footer {
+  .footer {
     background-color: #777;
     padding: 16px;
     text-align: center;
     color: white;
   }
   .content {
-    padding: 16px;
-    height: 450px;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .card {
     max-width: 600px;
@@ -52,7 +52,7 @@
 <header class="header">
   <h1>Kinozal</h1>
 </header>
-<nav>Home</nav>
+<nav class="navigation">Home</nav>
 <section class="content">
   <article class="card">
     <header>
@@ -73,9 +73,71 @@
     </section>
   </article>
 </section>
-<footer>
+<footer class="footer">
   <p>Footer</p>
 </footer>
+<script>
+  function appendContent(content) {
+    const el = document.querySelector(".content");
+    el.appendChild(content);
+  }
+  function createContent() {
+    const fragment = document.createDocumentFragment();
+    const article = document.createElement('article');
+    article.classList.add('card');
+    
+    // header
+    const h2 = document.createElement('H2');
+    h2.textContent = 'Mareld';
 
+    const header = document.createElement('header');
+    header.appendChild(h2);
+    article.appendChild(header)
+
+    // section
+    const section = document.createElement('section');
+    section.classList.add('card__content');
+
+    // image
+    const img = document.createElement('img');
+    img.src = 'https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg';
+    section.appendChild(img);
+
+    // subsection
+    const subsection = document.createElement('section');
+    section.appendChild(subsection);
+
+    // info
+    const info = document.createElement('p');
+    info.textContent = '2019 - 1h 34min';
+    subsection.appendChild(info);
+
+    // line 1
+    const line1 = document.createElement('hr');
+    subsection.appendChild(line1);
+
+    // description
+    const description = document.createElement('p');
+    description.textContent = 'A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can\'t distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.';
+    subsection.appendChild(description);
+
+    // line 2
+    const line2 = document.createElement('hr');
+    subsection.appendChild(line2);
+
+    // director
+    const director = document.createElement('p');
+    director.textContent = 'Director: Ove Valeskog';
+    subsection.appendChild(director);
+
+
+    article.appendChild(section);
+
+    fragment.appendChild(article);
+    return fragment;
+  }
+
+  appendContent(createContent());
+</script>
 </body>
 </html>
