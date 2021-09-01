@@ -4,48 +4,8 @@
 <title>Kinozal</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style type="text/css">
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    color: #010101
-  }
-  .header {
-    background-color: #777;
-    padding: 32px;
-    text-align: center;
-    font-size: 35px;
-    color: white;
-  }
-  .navigation {
-    background: #ccc;
-    padding: 8px;
-    text-align: center;
-  }
-  .footer {
-    background-color: #777;
-    padding: 16px;
-    text-align: center;
-    color: white;
-  }
-  .content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  .card {
-    max-width: 600px;
-  }
-  .card__content {
-    display: flex;
-    flex-direction: row;
-  }
-  .card__content > img {
-    max-height: 150px;
-    margin: 16px 16px 0 0;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 
@@ -54,118 +14,22 @@
 </header>
 <nav class="navigation">Home</nav>
 <section class="content">
-  <article class="card">
-    <header>
-      <h2>Mareld</h2>      
-    </header>
-    <section class="card__content">
-     
-      <img src="https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg"
-           alt="Mareld">
-     
-      <section>
-        <p>2019 - 1h 34min</p>
-        <hr>
-        <p>A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can't distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.</p>
-        <hr>
-        <p>Director: Ove Valeskog</p>
-      </section>
-    </section>
-  </article>
+  
 </section>
 <footer class="footer">
   <p>Footer</p>
 </footer>
+
 <script>
-  function appendContent(content) {
-    const el = document.querySelector(".content");
-    el.appendChild(content);
-  }
-  function createFragmentTemplate(str){
-    var template = document.createElement("template");
-    template.innerHTML = str;
-    return template.content;
-  }
-  function createContentA() {
-    const fragment = document.createDocumentFragment();
-    const article = document.createElement('article');
-    article.classList.add('card');
-    
-    // header
-    const h2 = document.createElement('H2');
-    h2.textContent = 'Mareld';
-
-    const header = document.createElement('header');
-    header.appendChild(h2);
-    article.appendChild(header)
-
-    // section
-    const section = document.createElement('section');
-    section.classList.add('card__content');
-
-    // image
-    const img = document.createElement('img');
-    img.src = 'https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg';
-    section.appendChild(img);
-
-    // subsection
-    const subsection = document.createElement('section');
-    section.appendChild(subsection);
-
-    // info
-    const info = document.createElement('p');
-    info.textContent = '2019 - 1h 34min';
-    subsection.appendChild(info);
-
-    // line 1
-    const line1 = document.createElement('hr');
-    subsection.appendChild(line1);
-
-    // description
-    const description = document.createElement('p');
-    description.textContent = 'A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can\'t distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.';
-    subsection.appendChild(description);
-
-    // line 2
-    const line2 = document.createElement('hr');
-    subsection.appendChild(line2);
-
-    // director
-    const director = document.createElement('p');
-    director.textContent = 'Director: Ove Valeskog';
-    subsection.appendChild(director);
-
-
-    article.appendChild(section);
-
-    fragment.appendChild(article);
-    return fragment;
+  const movie = {
+    name: 'Mareld',
+    date: '2019 - 1h 34min',
+    thumb: 'https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg',
+    description: 'A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can\'t distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.',
+    director: 'Ove Valeskog'
   }
 
-  function createContentB() {
-    const article = `<article class="card">
-      <header>
-        <h2>Mareld</h2>      
-      </header>
-      <section class="card__content">
-       
-        <img src="https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg"
-             alt="Mareld">
-       
-        <section>
-          <p>2019 - 1h 34min</p>
-          <hr>
-          <p>A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can't distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.</p>
-          <hr>
-          <p>Director: Ove Valeskog</p>
-        </section>
-      </section>
-    </article>`;
-    return createFragmentTemplate(article);
-  }
-
-  appendContent(createContentA());
-  appendContent(createContentB());
+  appendContent(createMovieCard(movie));
 </script>
 </body>
 </html>
