@@ -81,7 +81,12 @@
     const el = document.querySelector(".content");
     el.appendChild(content);
   }
-  function createContent() {
+  function createFragmentTemplate(str){
+    var template = document.createElement("template");
+    template.innerHTML = str;
+    return template.content;
+  }
+  function createContentA() {
     const fragment = document.createDocumentFragment();
     const article = document.createElement('article');
     article.classList.add('card');
@@ -137,7 +142,30 @@
     return fragment;
   }
 
-  appendContent(createContent());
+  function createContentB() {
+    const article = `<article class="card">
+      <header>
+        <h2>Mareld</h2>      
+      </header>
+      <section class="card__content">
+       
+        <img src="https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg"
+             alt="Mareld">
+       
+        <section>
+          <p>2019 - 1h 34min</p>
+          <hr>
+          <p>A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can't distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.</p>
+          <hr>
+          <p>Director: Ove Valeskog</p>
+        </section>
+      </section>
+    </article>`;
+    return createFragmentTemplate(article);
+  }
+
+  appendContent(createContentA());
+  appendContent(createContentB());
 </script>
 </body>
 </html>
