@@ -21,15 +21,11 @@
 </footer>
 
 <script>
-  const movie = {
-    name: 'Mareld',
-    date: '2019 - 1h 34min',
-    thumb: 'https://m.media-amazon.com/images/M/MV5BZDM5NGNlNGYtYzEyNS00ZWNmLWE1ODItYzQxZGZhNThiMzkzXkEyXkFqcGdeQXVyMTYzNDY0OTE@._V1_.jpg',
-    description: 'A film team sets off on a catamaran to make a thriller. They come across surprises and in the end you can\'t distinguish between reality and fiction. In the film, we follow the fictional and documentary events in parallel.',
-    director: 'Ove Valeskog'
-  }
-
-  appendContent(createMovieCard(movie));
+  fetch('https://run.mocky.io/v3/d233f719-e34b-4c0e-bc21-103a931f4bc4')
+    .then((response) => response.json())
+    .then((data) =>
+            data.forEach(movie =>
+                    appendContent('content', createMovieCard(movie))));
 </script>
 </body>
 </html>
