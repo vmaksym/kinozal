@@ -4,8 +4,7 @@
 <title>Kinozal</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles.css">
-<script type="text/javascript" src="scripts.js"></script>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 
@@ -17,25 +16,9 @@
   
 </section>
 <footer class="footer">
-  <p>Footer</p>
+  <p>© Kinozal</p>
 </footer>
 
-<script>
-  appendContent('navigation', createNavigation());
-
-  fetch('https://run.mocky.io/v3/d233f719-e34b-4c0e-bc21-103a931f4bc4')
-    .then((response) => response.json())
-    .then(data => {
-      const sort = new URLSearchParams(location.search).get('sort');
-      switch (sort) {
-        case 'name': return data.sort((a,b) => a.name.localeCompare(b.name));
-        case 'date': return data.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-        default: return data;
-      }
-    })
-    .then((data) =>
-            data.forEach(movie =>
-                    appendContent('content', createMovieCard(movie))));
-</script>
+<script type="module" src="src/main.js"></script>
 </body>
 </html>
